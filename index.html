@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Recipe Tracker</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #14ae5c">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navigation</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Recipes</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Community</a></li>
+                <li><a class="dropdown-item" href="#">Resources</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Contact Us</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <!-- Search Bar -->
+          <form class="d-flex" role="search" onsubmit="event.preventDefault(); searchRecipes();">
+            <input
+              id="search-bar"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search recipes"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        <div class="sort-container">
+            <button onclick="toggleSortDropdown()">Sort</button>
+            <div id="sort-dropdown" class="dropdown hidden">
+                <button onclick="sortRecipes('asc')">Cooking Time: Low to High</button>
+                <button onclick="sortRecipes('desc')">Cooking Time: High to Low</button>
+            </div>
+        </div>
+        </div>
+      </div>
+    </nav>
+    <div class="mainBody">
+        <div class="contactInfo"></div>
+        <div class="centerTitle">
+            <h1 class="mainTitle">Recipe Tracker</h1>
+        </div>
+        <div class="holderBar" id="barHold">
+            <button class="buttonForm" id="btnRecipe">
+                <p class="numRecipes">Number of Recipes saved:</p>
+            </button>
+            <button class="buttonForm" id="btnCategory">
+                <p class="numCategories">Number of categories used:</p>
+            </button>
+            <button class="buttonForm" id="btnFavCounter">
+              <p class="numFavs">Favorite recipes: 0</p>
+            </button>
+        </div>
+        <h2 class="formTitle">Enter your food recipe!</h2>
+
+        <input class="forms" type="text" id="food-name" placeholder="Enter food name"><br>
+        <input class="forms" type="text" id="food-ingredients" placeholder="Enter ingredients"><br>
+        <input class="forms" type="text" id="food-steps" placeholder="Enter steps"><br>
+        <input class="forms" type="text" id="food-category" placeholder="Enter category of food"><br>
+        <input class="forms" type="text" id="cooking-time" placeholder="Enter cook time"><br>
+        <input class="forms" type="text" id="addPic" placeholder="Paste a link for picture"><br>
+        <input class="forms" type="text" id="servingSize" placeholder="Enter Serving Size here"><br>
+        <button class="buttonForm recipeButton" onclick="addRecipe(); countRecipes(); addCategory()">Add food recipe to list</button>
+        <button class="buttonForm" onclick="showFavorites()">Show Favorites</button>
+        <button class="buttonForm" onclick="showAll()">Show all recipes</button>
+        <h2>Your Food List</h2>
+        <div class="listGrid">
+            <ul id="recipe-list">
+        </div>
+        
+        
+    </div>
+    <div class="imgSocial">
+        <div class="imgsSecSocials">
+            <img src="imgContacts.png" class="imgLeftContacts"/>
+            <div class="socials">
+                <img src="twitter.png" class="imgSocial"/>
+                <img src="insta.png" class="imgSocial"/>
+                <img src="youtube.png" class="imgSocial"/>
+                <img src="LinkedIn.png" class="imgSocial"/>
+            </div>
+   
+            <div class="listColumn">
+                <h2>Explore</h2>
+                <h4 class="subheading">Design</h4>
+                <h4 class="subheading">Prototyping</h4>
+                <h4 class="subheading">Development features</h4>
+                <h4 class="subheading">Design systems</h4>
+                <h4 class="subheading">Collaboration features</h4>
+                <h4 class="subheading">Design process</h4>
+                <h4 class="subheading">Food</h4>
+
+            </div>
+            <div class="list2Column">
+                <h2>Resources</h2>
+                <h4 class="subheading">Blog</h4>
+                <h4 class="subheading">Best practices</h4>
+                <h4 class="subheading">Health</h4>
+                <h4 class="subheading">Safety</h4>
+                <h4 class="subheading">Support</h4>
+                <h4 class="subheading">Developers</h4>
+                <h4 class="subheading">Resource library</h4>
+
+            </div>
+        </div>
+ 
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- link to my jQuery dictionary -->
+        
+    <script src="app.js"></script>
+  </body>
+</html>
